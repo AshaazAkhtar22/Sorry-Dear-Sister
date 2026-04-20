@@ -1,0 +1,315 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden; /* prevent sideways scroll */
+}
+
+/* background sky */
+.bg {
+  min-height: 100vh;
+  width: 100%;
+  background: url("pictures/sky.jpg") no-repeat center center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* dark overlay */
+.bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 0, 40, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 0;
+}
+
+/* container */
+.container {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px; /* better for phones */
+  box-sizing: border-box;
+}
+
+/* button */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #a855f7, #7c3aed);
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.7);
+}
+
+/* images */
+img {
+  width: 120px;
+  max-width: 35vw;
+  height: auto;
+  margin: 8px;
+}
+
+/* text */
+h1 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 0 10px;
+}
+
+/* letter */
+.letter {
+  white-space: pre-line;
+  max-width: 90%;
+  margin: auto;
+}
+
+/* envelope */
+.envelope {
+  width: 60vw;          /* responsive */
+  max-width: 220px;
+  height: 38vw;
+  max-height: 140px;
+  background: linear-gradient(45deg, #a855f7, #7c3aed);
+  margin: auto;
+  position: relative;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+}
+
+.flap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #6d28d9;
+  clip-path: polygon(0 0, 100% 0, 50% 60%);
+  transition: 0.8s ease;
+}
+
+.envelope.open .flap {
+  transform: rotateX(180deg);
+}
+
+/* stars */
+.star {
+  position: absolute;
+  width: 20px; /* smaller for phone */
+  max-width: 6vw;
+  animation: blink 2s infinite alternate;
+}
+
+@keyframes blink {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* moon */
+.moon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  max-width: 20vw;
+}
+
+/* floating characters */
+.characters img {
+  animation: floatSoft 4s ease-in-out infinite;
+}
+
+.characters img:nth-child(2) {
+  animation-delay: 2s;
+}
+
+@keyframes floatSoft {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0px); }
+}
+
+/* animation */
+.fade-in {
+  animation: fadeIn 2s ease;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* heartbeat */
+.heartbeat {
+  animation: beat 1.2s infinite;
+}
+
+@keyframes beat {
+  0% {transform: scale(1);}
+  50% {transform: scale(1.08);}
+  100% {transform: scale(1);}
+}
+
+/* extra small devices */
+@media (max-width: 400px) {
+  h1 { font-size: 20px; }
+  p { font-size: 13px; }
+  .btn { font-size: 14px; padding: 8px 16px; }
+}
+/* text block */
+.main-text {
+  font-size: clamp(14px, 4vw, 18px);
+  line-height: 1.6;
+  padding: 0 10px;
+}
+
+/* characters layout */
+.characters {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap; /* prevents overflow on phone */
+  margin: 15px 0;
+}
+
+.characters img {
+  width: 30vw;
+  max-width: 140px;
+  height: auto;
+}
+
+/* sorry heading */
+.sorry {
+  font-size: clamp(22px, 6vw, 32px);
+}
+
+/* paragraph */
+.container p {
+  font-size: clamp(14px, 4vw, 16px);
+}
+/* title */
+.title {
+  font-size: clamp(22px, 6vw, 30px);
+  padding: 0 10px;
+}
+
+/* subtitles */
+.subtitle {
+  font-size: clamp(14px, 4vw, 18px);
+  padding: 0 10px;
+}
+
+/* character image */
+.character img {
+  width: 35vw;
+  max-width: 160px;
+  height: auto;
+  margin: 10px 0;
+}
+
+/* stars (make them lighter + responsive) */
+.star {
+  position: absolute;
+  width: 18px;
+  max-width: 5vw;
+  opacity: 0.8;
+}
+
+/* moon responsive */
+.moon {
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 60px;
+  max-width: 18vw;
+}
+
+/* prevent overflow */
+body {
+  overflow-x: hidden;
+}
+
+/* small devices */
+@media (max-width: 400px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .subtitle {
+    font-size: 13px;
+  }
+
+  .character img {
+    width: 45vw;
+  }
+}
+/* letter title */
+.letter-title {
+  font-size: clamp(20px, 6vw, 28px);
+  margin-bottom: 10px;
+}
+
+/* typing letter text */
+.letter {
+  font-size: clamp(14px, 4vw, 18px);
+  line-height: 1.6;
+  padding: 0 12px;
+  max-width: 95%;
+  margin: 0 auto 20px auto;
+  word-wrap: break-word;
+}
+
+/* container spacing improvement */
+.container {
+  padding: 20px 15px;
+}
+
+/* button improvement */
+.btn {
+  font-size: clamp(14px, 4vw, 16px);
+  padding: 10px 20px;
+}
+
+/* smooth slide animation */
+.slide-up {
+  animation: slideUp 1.2s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* extra small phones */
+@media (max-width: 400px) {
+  .letter {
+    font-size: 13px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+  }
+}

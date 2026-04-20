@@ -1,0 +1,66 @@
+// navigation (safe handling)
+function goToLetter() {
+  window.location.href = "letter.html";
+}
+
+function goToFinal() {
+  window.location.href = "final.html";
+}
+
+// typing text
+const text = `I know maine galti ki...  
+Shayad tumhe hurt kiya… aur uska mujhe bohot regret hai 🥺  
+
+Tum meri sirf sister nahi ho…  
+tum meri best friend ho, meri support ho 💜  
+
+Jab tum mujhse baat nahi karti… sab kuch empty lagta hai...  
+
+Please mujhe maaf kar do…  
+I promise main better banunga 🌙  
+
+Bas ek baar smile kar do... wahi meri jeet hai ✨`;
+
+let i = 0;
+let typingSpeed = 35; // slightly smoother for phones
+
+function typeEffect() {
+  const target = document.getElementById("typing");
+
+  if (!target) return; // prevents errors on other pages
+
+  if (i < text.length) {
+    target.innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeEffect, typingSpeed);
+  }
+}
+
+// start typing safely
+window.addEventListener("load", () => {
+  if (document.getElementById("typing")) {
+    typeEffect();
+  }
+});
+
+// envelope open (mobile safe)
+function openEnvelope() {
+  const env = document.querySelector(".envelope");
+
+  if (!env) return;
+
+  // prevent multiple taps glitch
+  if (env.classList.contains("open")) return;
+
+  env.classList.add("open");
+
+  // vibration feedback (works on supported phones)
+  if (navigator.vibrate) {
+    navigator.vibrate(50);
+  }
+
+  // delay then go to next page
+  setTimeout(() => {
+    window.location.href = "final.html";
+  }, 1400);
+}
